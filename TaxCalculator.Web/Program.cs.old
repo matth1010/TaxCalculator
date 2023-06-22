@@ -1,0 +1,97 @@
+@page
+@using TaxCalculator.Web.Pages
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Postal Code</th>
+                        <th>Annual Income</th>
+                        <th>Tax Amount</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var record in Model.TaxRecords)
+                    {
+                        <tr id="taxRecord_@record.Id">
+                            <td>@record.PostalCode</td>
+                            <td>@record.AnnualIncome</td>
+                            <td>@record.TaxAmount</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" onclick="editTaxRecord(@record.Id)">Edit</button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteTaxRecord(@record.Id)">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Add New Tax Record</h3>
+                    <form method="post" class="tax-form" id="taxForm">
+                        <div class="form-group">
+                            <label for="postalCode">Postal Code:</label>
+                            <input type="text" class="form-control" id="postalCode" name="taxCalculation.PostalCode" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="annualIncome">Annual Income:</label>
+                            <input type="number" class="form-control" id="annualIncome" name="taxCalculation.AnnualIncome" required />
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" onclick="calculateTax()">Calculate</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="editFormContainer" style="display: none;">
+    <h3>Edit Tax Record</h3>
+    <form id="editForm" class="form">
+        <!-- Form fields -->
+        <div class="form-group">
+            <label for="editPostalCode">Postal Code:</label>
+            <input type="text" class="form-control" id="editPostalCode" name="editTaxCalculation.PostalCode" required />
+        </div>
+        <div class="form-group">
+            <label for="editAnnualIncome">Annual Income:</label>
+            <input type="number" class="form-control" id="editAnnualIncome" name="editTaxCalculation.AnnualIncome" required />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="button" class="btn btn-secondary" onclick="cancelEdit()">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<style>
+    .tax-form {
+        margin-top: 20px;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+</style>

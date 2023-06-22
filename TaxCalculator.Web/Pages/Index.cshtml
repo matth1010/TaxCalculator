@@ -1,0 +1,100 @@
+﻿@page
+@using TaxCalculator.Web.Pages
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@model IndexModel
+@{
+    ViewData["Title"] = "Tax Calculator";
+    var apiBaseUrl = Configuration["ApiBaseUrl"];
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div id="errorContainer" style="display: none;">
+    <div id="errorMessageContainer"></div>
+</div>
+
+<div class="col-md-4" id="addTaxRecordContainer">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">Add New Tax Record</h3>
+            <form method="post" class="tax-form" id="taxForm">
+                <div class="form-group">
+                    <label for="postalCode">Postal Code:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="postalCode" name="taxCalculation.PostalCode" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="annualIncome">Annual Income:</label>
+                    <input type="number" class="form-control" id="annualIncome" name="taxCalculation.AnnualIncome" required />
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" onclick="calculateTax()">Calculate</button>
+                    <button type="button" class="btn btn-secondary" onclick="clearFields()">Clear Fields</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="editFormContainer" style="display: none;">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Edit Tax Record</h3>
+                <form id="editForm" class="form">
+                    <div class="form-group">
+                        <label for="editPostalCode">Postal Code:</label>
+                        <input type="text" class="form-control" id="editPostalCode" name="editTaxCalculation.PostalCode" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="editAnnualIncome">Annual Income:</label>
+                        <input type="number" class="form-control" id="editAnnualIncome" name="editTaxCalculation.AnnualIncome" required />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="button" class="btn btn-secondary" onclick="clearFields()">Clear Fields</button>
+                        <button type="button" class="btn btn-danger" onclick="cancelEdit()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-8">
+    <div class="card">
+        <div class="card-body" style="overflow-y: auto; max-height: 300px;">
+            <h3 class="card-title">Records</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Postal Code</th>
+                        <th>Annual Income</th>
+                        <th>Tax Amount</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var record in Model.TaxRecords)
+                    {
+                        <tr id="taxRecord_@record.Id">
+                            <td>@record.PostalCode</td>
+                            <td>@record.AnnualIncome</td>
+                            <td>@record.TaxAmount</td>
+                            <td>
+                                <button class="btn btn-secondary" onclick="editTaxRecord(@record.Id)"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger" onclick="deleteTaxRecord(@record.Id)"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="css/tax-calculate-style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-...your-sha512-hash-here..." crossorigin="anonymous" />
+<script src="js/tax-calculate-module.js" data-api-base-url="@apiBaseUrl"></script>

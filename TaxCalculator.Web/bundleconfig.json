@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "wwwroot/jsbundles/plugins/layout.js",
+    "inputFiles": [
+      "wwwroot/js/plugins/jquery/jquery-3.6.0.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/jsbundles/Claims/apps/taxcalculate.js",
+    "inputFiles": [
+      "wwwroot/../../Genasys.Portal.Claims/js/tax-calculate-module.js"
+    ]
+  },
+]

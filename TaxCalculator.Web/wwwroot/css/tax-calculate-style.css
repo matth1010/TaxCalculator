@@ -1,0 +1,162 @@
+.viewdata-title {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: flex-start; 
+}
+
+.form-group label {
+    flex: 0 0 120px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.form-group .form-control {
+    width: 150px;
+}
+
+.form-group .btn {
+    margin-right: 10px;
+}
+
+.table {
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+    border-color: #E4E4E4;
+    padding: 10px;
+}
+
+.card-body .form-group {
+    display: flex;
+    align-items: center;
+}
+
+.card-body .form-group label {
+     margin-bottom: 0;
+}
+
+.card-body .form-group .form-control {
+     margin-bottom: 0;
+}
+
+.btn-primary {
+    background-color: transparent;
+    border-color: #007AFF;
+    color: #007AFF;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary:hover {
+        background-color: #007AFF;
+        color: #FFFFFF;
+}
+
+.btn-secondary {
+    border-color: #007AFF;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-danger {
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: transparent;
+    border-color: red;
+    color: red;
+}
+
+.no-results-message {
+    color: #888888;
+    font-style: italic;
+    text-align: center;
+}
+
+.error-title-message {
+    color: red;
+    font-style: italic;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+body {
+    background-color: #F7F7F7;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.card-title {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.card {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px
+}
+
+.form-control {
+    border: 1px solid #E4E4E4;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.btn-primary {
+    background-color: #007AFF;
+    border-color: #007AFF;
+    color: #FFFFFF;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border-color: #007AFF;
+    color: #007AFF;
+}
+
+.validation-error {
+    border-color: red;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+#errorContainer {
+    margin-bottom: 10px;
+}
+
+#errorContainer,
+#errorMessageContainer {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#errorContainer {
+    background-color: #F8D7DA;
+}
+
+#errorContainer .error-message {
+        margin-top: 0;
+}
