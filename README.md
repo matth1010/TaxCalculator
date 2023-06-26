@@ -23,7 +23,7 @@ The Tax Calculator Web Application provides a user interface to calculate taxes 
 
 Before running the Tax Calculator Web Application, make sure you have the following installed:
 
-- [.NET 5 SDK](https://dotnet.microsoft.com/download/dotnet/5.0)
+- [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
 
 ## Getting Started
 
