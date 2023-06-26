@@ -160,9 +160,12 @@
             });
     }
 
-    function clearFields() {
-        document.getElementById("postalCode").value = "";
-        document.getElementById("annualIncome").value = "";
+    function clearFields(formName) {
+        var form = document.forms[formName];
+
+        if (form) {
+            form.reset();
+        }
     }
 
     function showNoResultsMessage() {
